@@ -1,6 +1,6 @@
 #Pinned Sites
 
-Pinned Sites is a small api providing most all functionality for doing IE9+ site pinning.
+Pinned Sites is a small api providing most all functionality for doing IE9+ site pinning. Functionality still missing and will update soon is style support within Thumbnail ThumbBar, currently it does basic buttons without ability to toggle icons/purpose.
 
 ## Taskbar API
 
