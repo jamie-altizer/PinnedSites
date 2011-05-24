@@ -32,11 +32,7 @@ clear() - Will clear the overlay icon from the taskbar.
 	
 ## Jumplist API
 
-build(object) - Will build the dynamic jumplist from the JSON object passed in as input. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). Other notes: 
-
-* the dynamic jumplist acts as a stack when adding items... the first item added shows at the bottom
-* most users can only see 10 jumplist items (unless they modify their taskbar settings) and the Tasks for pinned sites make up part of the total viewable
-
+build(object) - Will build the dynamic jumplist from the JSON object passed in as input. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
 
 	Pinned.Jumplist.clear();
     Pinned.Jumplist.build({ 'name': 'Jumplist Example', 
@@ -52,6 +48,10 @@ build(object) - Will build the dynamic jumplist from the JSON object passed in a
             { 'name': 'Item 9', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
             { 'name': 'Item 10', 'action': 'http://domain', 'icon': 'http://domain/example.ico' }]
     });
+
+Other notes: 
+* the dynamic jumplist acts as a stack when adding items... the first item added shows at the bottom
+* most users can only see 10 jumplist items (unless they modify their taskbar settings) and the Tasks for pinned sites make up part of the total viewable
 
 clear() - Will clear the dynamic jumplist.
 
