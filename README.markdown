@@ -56,7 +56,7 @@ Important notes:
 
 clear() - Will clear the dynamic jumplist.
 
-## Thumbnail ThumbBar
+## Thumbnail ThumbBar API
 
 build(object) - Will build the thumbbar and show it. If not specified with keepOnUnload = true, the thumbbar will be cleared upon leaving the window.
 
