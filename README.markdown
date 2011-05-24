@@ -2,6 +2,12 @@
 
 Pinned Sites is a small api providing most all functionality for doing IE9+ site pinning. Functionality still missing and will update soon is style support within Thumbnail ThumbBar, currently it does basic buttons without ability to toggle icons/purpose.
 
+## Basic API
+
+isPinned() - Will return true/false whether site is pinned or not.
+
+	Pinned.isPinned();
+
 ## Taskbar API
 
 flash(intervalInSeconds) - Will flash the taskbar button at the interval provided, when the window is not active. Default interval is 3.
