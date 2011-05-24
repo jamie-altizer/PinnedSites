@@ -49,7 +49,8 @@ build(object) - Will build the dynamic jumplist from the JSON object passed in a
             { 'name': 'Item 10', 'action': 'http://domain', 'icon': 'http://domain/example.ico' }]
     });
 
-Other notes: 
+Important notes: 
+
 * the dynamic jumplist acts as a stack when adding items... the first item added shows at the bottom
 * most users can only see 10 jumplist items (unless they modify their taskbar settings) and the Tasks for pinned sites make up part of the total viewable
 
