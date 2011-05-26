@@ -89,7 +89,7 @@ build(buttons, keepOnload) - Will build the thumbbar and show it. If not specifi
 
 ### Styled buttons
 
-The first button is "styled" and the second is not. 
+The first button is "styled" and the second is not. If you do not set "current," the default will be the first style.
 
 	Pinned.ThumbBar.build([
 		{'styles': [
