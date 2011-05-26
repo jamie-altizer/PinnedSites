@@ -90,6 +90,7 @@ build(buttons, keepOnload) - Will build the thumbbar and show it. If not specifi
 ### Styled buttons
 
 The first button is "styled" and the second is not. 
+
 	Pinned.ThumbBar.build([
 		{'styles': [
 				{'icon': 'style1.ico', 'tooltip': 'Diamond Button', 'current': true},
