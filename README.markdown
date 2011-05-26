@@ -8,6 +8,22 @@ isPinned() - Will return true/false whether site is pinned or not.
 
 	Pinned.isPinned();
 
+init() - Will initialize the site with the appropriate meta tags. If values are not provided, they will be determined from the site (e.g. start-url will be the current url). All fields are optional.
+
+	Pinned.init({'name': 'My Pinned Site', 'tooltip': 'This site is AWESOME', 'startUrl': 'http://domain', 'windowSize': 'width=800;height=600', 'color': 'limegreen'});
+
+addToStartMenu() - Will open a special window from IE that allows the user to add a link to their Start Menu. This is to be used in conjunction with a click event or something of the sort.
+
+	<a href="#">Click here</a> to add a link to the Start Menu!
+
+## Tasks API
+
+build() - Will build/add the provided tasks as tasks via the meta tags. If the "icon" field is left out, it automatically tries "/favicon.ico" at the location the action refers to. E.g. action = 'http://www.google.com', the default icon will be 'http://www.google.com/favicon.ico'.
+
+	Pinned.Tasks.build([
+		{ 'name': 'Search', 'action': 'http://www.google.com' },
+		{ 'name': 'CNN', 'action': 'http://www.cnn.com' }]);
+
 ## Taskbar API
 
 flash(intervalInSeconds) - Will flash the taskbar button at the interval provided, when the window is not active. Default interval is 3.
@@ -38,11 +54,10 @@ clear() - Will clear the overlay icon from the taskbar.
 	
 ## Jumplist API
 
-build(object) - Will build the dynamic jumplist from the JSON object passed in as input. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
+build(listName, listItems) - Will build the dynamic jumplist from the provided array. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
 
 	Pinned.Jumplist.clear();
-    Pinned.Jumplist.build({ 'name': 'Jumplist Example', 
-        'items': [
+    Pinned.Jumplist.build('Jumplist Example',[
             { 'name': 'Item 1', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
             { 'name': 'Item 2', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
             { 'name': 'Item 3', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
@@ -52,8 +67,7 @@ build(object) - Will build the dynamic jumplist from the JSON object passed in a
             { 'name': 'Item 7', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
             { 'name': 'Item 8', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
             { 'name': 'Item 9', 'action': 'http://domain', 'icon': 'http://domain/example.ico' },
-            { 'name': 'Item 10', 'action': 'http://domain', 'icon': 'http://domain/example.ico' }]
-    });
+            { 'name': 'Item 10', 'action': 'http://domain', 'icon': 'http://domain/example.ico' }]);
 
 Important notes: 
 
@@ -64,13 +78,30 @@ clear() - Will clear the dynamic jumplist.
 
 ## Thumbnail ThumbBar API
 
-build(object) - Will build the thumbbar and show it. If not specified with keepOnUnload = true, the thumbbar will be cleared upon leaving the window.
+The callbacks provided will be called with two parameters: buttonId and styles. Styles will be empty if none were provided. The callback is intended to handle all functionality desired upon click, this includes determining the current style and then changing it with Pinned.ThumbBar.changeStyle().
 
-    Pinned.ThumbBar.build({ 'items':
-        [{ 'name': 'Button1', 'icon': 'http://localhost/jamie/pinnedsites/style1.ico', 'callback': LocalEx.button1 },
-         { 'name': 'Button2', 'icon': 'http://localhost/jamie/pinnedsites/style2.ico', 'callback': LocalEx.button2}],
-        'keepOnUnload': false
-    });
+build(buttons, keepOnload) - Will build the thumbbar and show it. If not specified with keepOnUnload = true, the thumbbar will be cleared upon leaving the window.
+
+### Basic buttons
+
+    Pinned.ThumbBar.build([{ 'name': 'Button1', 'icon': 'http://localhost/jamie/pinnedsites/style1.ico', 'callback': ButtonCallbackExample.button1 },
+         { 'name': 'Button2', 'icon': 'http://localhost/jamie/pinnedsites/style2.ico', 'callback': ButtonCallbackExample.button2}], false);
+
+### Styled buttons
+
+The first button is "styled" and the second is not. 
+	Pinned.ThumbBar.build([
+		{'styles': [
+				{'icon': 'style1.ico', 'tooltip': 'Diamond Button', 'current': true},
+				{'icon': 'style2.ico', 'tooltip': 'Circle Button'}],
+		 'callback': ChangeStyleExample.button1},
+        {'tooltip': 'Pin Button', 'icon': 'pin.ico', 'callback': ChangeStyleExample.button2}],
+        false);
+
+
+changeStyle(buttonId, styleId) - Will set the appropriate style.current to true and tell IE to switch the button
+
+	Pinned.ThumbBar.changeStyle(someButtonProvided, styleIdDesired);
 
 hideAll() - Will hide all buttons on the thumbbar.
 
