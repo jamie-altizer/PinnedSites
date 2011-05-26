@@ -1,6 +1,11 @@
 #Pinned Sites
 
-Pinned Sites is a small api providing most all functionality for doing IE9+ site pinning. Functionality still missing and will update soon is style support within Thumbnail ThumbBar, currently it does basic buttons without ability to toggle icons/purpose.
+Pinned Sites is a small api providing most all functionality for doing IE9+ site pinning. For a working example see http://jamie-altizer.github.com/pinnedsites/
+
+## Breaking changes with version 0.2.0.0
+
+* Pinned.Jumplist.build() went from `Pinned.Jumplist.build(object)` to `Pinned.Jumplist.build(name, items)` where items is an array
+* Pinned.ThumbBar.build() went from `Pinned.ThumbBar.build(object)` to `Pinned.ThumbBar.build(buttons, keepOnUnload)` where buttons is an array
 
 ## Basic API
 
@@ -54,7 +59,7 @@ clear() - Will clear the overlay icon from the taskbar.
 	
 ## Jumplist API
 
-build(listName, listItems) - Will build the dynamic jumplist from the provided array. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
+build(name, items) - Will build the dynamic jumplist from the provided array. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
 
 	Pinned.Jumplist.clear();
     Pinned.Jumplist.build('Jumplist Example',[
