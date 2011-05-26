@@ -23,7 +23,7 @@ addToStartMenu() - Will open a special window from IE that allows the user to ad
 
 ## Tasks API
 
-build() - Will build/add the provided tasks as tasks via the meta tags. If the "icon" field is left out, it automatically tries "/favicon.ico" at the location the action refers to. E.g. action = 'http://www.google.com', the default icon will be 'http://www.google.com/favicon.ico'.
+build() - Will build/add the provided tasks as tasks via the meta tags. If the "icon" field is left out, it automatically tries "/favicon.ico" at the location the action refers to. E.g. action = http://www.google.com, the default icon will be http://www.google.com/favicon.ico.
 
 	Pinned.Tasks.build([
 		{ 'name': 'Search', 'action': 'http://www.google.com' },
@@ -59,7 +59,7 @@ clear() - Will clear the overlay icon from the taskbar.
 	
 ## Jumplist API
 
-build(name, items) - Will build the dynamic jumplist from the provided array. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). 
+build(name, items) - Will build the dynamic jumplist from the provided array. It will also write to the console log when enough jumplist items have been added to go beyond the "typical" (10 items) maximum viewable or beyond the maximum supported by Windows (20 items). If you leave out the 'icon' the script will look for the favicon (see Tasks for an example)
 
 	Pinned.Jumplist.clear();
     Pinned.Jumplist.build('Jumplist Example',[
